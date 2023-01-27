@@ -6,7 +6,7 @@ schema:
 dataSources:
   - kind: ethereum/contract
     name: Factory
-    network: optimism
+    network: kava-evm-testnet
     source:
       address: '0x8812420fb6E5d971C969CcEF2275210AB8D014f0'
       abi: Factory
@@ -34,7 +34,7 @@ dataSources:
 templates:
   - kind: ethereum/contract
     name: Pair
-    network: optimism
+    network: kava-evm-testnet
     source:
       abi: Pair
     mapping:
