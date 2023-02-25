@@ -4,17 +4,17 @@ import { BigDecimal, Address, BigInt } from '@graphprotocol/graph-ts/index'
 import { ZERO_BD, factoryContract, ADDRESS_ZERO, ONE_BD, UNTRACKED_PAIRS } from './helpers'
 
 const WKAVA_ADDRESS = '0xc86c7C0eFbd6A49B35E8714C5f59D99De09A225b'
-const WKAVA_USDC_PAIR = '0x5C27a0D0e6d045b5113D728081268642060f7499' 
+const WKAVA_USDC_PAIR = '0x5C27a0D0e6d045b5113D728081268642060f7499'
 
 export function getKavaPriceInUSD(): BigDecimal {
   // fetch kava prices for each stablecoin
   let wKavaPair = Pair.load(WKAVA_USDC_PAIR) // wKava is token0
 
   // all 3 have been created
-  if (wKavaPair !== null) { 
-    return wKavaPair.token0Price 
+  if (wKavaPair !== null) {
+    return wKavaPair.token0Price
   } else {
-    return ZERO_BD 
+    return ZERO_BD
   }
 }
 
@@ -25,24 +25,24 @@ let WHITELIST: string[] = [
   '0x818ec0a7fe18ff94269904fced6ae3dae6d6dc0b', // wBTC
   '0xE1da44C0dA55B075aE8E2e4b6986AdC76Ac77d73', // VARA
   '0xdb0e1e86b01c4ad25241b1843e407efc4d615248', // USX
-  '0x6b175474e89094c44da98b954eedeac495271d0f', // DAI
-  '0xe3f5a90f9cb311505cd691a46596599aa1a0ad7d', // wK
+  '0x765277EebeCA2e31912C9946eAe1021199B39C61', // DAI
+  '0x9591865D9d4BBD3b5FA8a8E2400fD530D1a16191', // wETH
   '0x6c2c113c8ca73db67224ef4d8c8dfcec61e52a9c', // LQDR
-  '0xb84df10966a5d7e1ab46d9276f55d57bd336afc7', // MAI
+  '0xf390830DF829cf22c53c8840554B98eafC5dCBc2', // MAI
   '0x739ca6d71365a08f584c8fc4e1029045fa8abc4b', // ACS
   '0xc19281f22a075e0f10351cd5d6ea9f0ac63d4327', // BIFI
-  '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48', // USDC
+  '0xfA9343C3897324496A05fC75abeD6bAC29f8A40f', // USDC
 ]
 
 // minimum liquidity required to count towards tracked volume for pairs with small # of Lps
 let MINIMUM_USD_THRESHOLD_NEW_PAIRS = BigDecimal.fromString('400000')
 
 // minimum liquidity for price to get tracked
-let MINIMUM_LIQUIDITY_THRESHOLD_K = BigDecimal.fromString('2')
+let MINIMUM_LIQUIDITY_THRESHOLD_ETH = BigDecimal.fromString('2')
 
 /**
- * Search through graph to find derived K per token.
- * @todo update to be derived K (add stablecoin estimates)
+ * Search through graph to find derived Eth per token.
+ * @todo update to be derived ETH (add stablecoin estimates)
  **/
 export function findKavaPerToken(token: Token): BigDecimal {
   if (token.id == WKAVA_ADDRESS) {
@@ -53,13 +53,13 @@ export function findKavaPerToken(token: Token): BigDecimal {
     let pairAddress = factoryContract.getPair(Address.fromString(token.id), Address.fromString(WHITELIST[i]), false)
     if (pairAddress.toHexString() != ADDRESS_ZERO) {
       let pair = Pair.load(pairAddress.toHexString())
-      if (pair.token0 == token.id && pair.reserveKava.gt(MINIMUM_LIQUIDITY_THRESHOLD_K)) {
+      if (pair.token0 == token.id && pair.reserveKava.gt(MINIMUM_LIQUIDITY_THRESHOLD_ETH)) {
         let token1 = Token.load(pair.token1)
-        return pair.token1Price.times(token1.derivedKava as BigDecimal) // return token1 per our token * K per token 1
+        return pair.token1Price.times(token1.derivedKava as BigDecimal) // return token1 per our token * Eth per token 1
       }
-      if (pair.token1 == token.id && pair.reserveKava.gt(MINIMUM_LIQUIDITY_THRESHOLD_K)) {
+      if (pair.token1 == token.id && pair.reserveKava.gt(MINIMUM_LIQUIDITY_THRESHOLD_ETH)) {
         let token0 = Token.load(pair.token0)
-        return pair.token0Price.times(token0.derivedKava as BigDecimal) // return token0 per our token * K per token 0
+        return pair.token0Price.times(token0.derivedKava as BigDecimal) // return token0 per our token * ETH per token 0
       }
     }
   }
