@@ -14,14 +14,14 @@ export function updateDayData(event: EthereumEvent): DayData {
     dayData = new DayData(dayID.toString())
     dayData.date = dayStartTimestamp
     dayData.dailyVolumeUSD = ZERO_BD
-    dayData.dailyVolumeETH = ZERO_BD
+    dayData.dailyVolumeKava = ZERO_BD
     dayData.totalVolumeUSD = ZERO_BD
-    dayData.totalVolumeETH = ZERO_BD
+    dayData.totalVolumeKava = ZERO_BD
     dayData.dailyVolumeUntracked = ZERO_BD
   }
 
   dayData.totalLiquidityUSD = uniswap.totalLiquidityUSD
-  dayData.totalLiquidityETH = uniswap.totalLiquidityETH
+  dayData.totalLiquidityKava = uniswap.totalLiquidityKava
   dayData.txCount = uniswap.txCount
   dayData.save()
 
@@ -105,17 +105,17 @@ export function updateTokenDayData(token: Token, event: EthereumEvent): TokenDay
     tokenDayData = new TokenDayData(tokenDayID)
     tokenDayData.date = dayStartTimestamp
     tokenDayData.token = token.id
-    tokenDayData.priceUSD = token.derivedETH.times(bundle.ethPrice)
+    tokenDayData.priceUSD = token.derivedKava.times(bundle.KavaPrice)
     tokenDayData.dailyVolumeToken = ZERO_BD
-    tokenDayData.dailyVolumeETH = ZERO_BD
+    tokenDayData.dailyVolumeKava = ZERO_BD
     tokenDayData.dailyVolumeUSD = ZERO_BD
     tokenDayData.dailyTxns = ZERO_BI
     tokenDayData.totalLiquidityUSD = ZERO_BD
   }
-  tokenDayData.priceUSD = token.derivedETH.times(bundle.ethPrice)
+  tokenDayData.priceUSD = token.derivedKava.times(bundle.KavaPrice)
   tokenDayData.totalLiquidityToken = token.totalLiquidity
-  tokenDayData.totalLiquidityETH = token.totalLiquidity.times(token.derivedETH as BigDecimal)
-  tokenDayData.totalLiquidityUSD = tokenDayData.totalLiquidityETH.times(bundle.ethPrice)
+  tokenDayData.totalLiquidityKava = token.totalLiquidity.times(token.derivedKava as BigDecimal)
+  tokenDayData.totalLiquidityUSD = tokenDayData.totalLiquidityKava.times(bundle.KavaPrice)
   tokenDayData.dailyTxns = tokenDayData.dailyTxns.plus(ONE_BI)
   tokenDayData.save()
 

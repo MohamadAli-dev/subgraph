@@ -8,7 +8,7 @@ import { Factory as FactoryContract } from '../types/templates/Pair/Factory'
 import { TokenDefinition } from './tokenDefinition'
 
 export const ADDRESS_ZERO = '0x0000000000000000000000000000000000000000'
-export const FACTORY_ADDRESS = '0x8812420fb6E5d971C969CcEF2275210AB8D014f0'
+export const FACTORY_ADDRESS = '0xA138FAFc30f6Ec6980aAd22656F2F11C38B56a95' //PF_Add
 
 export let ZERO_BI = BigInt.fromI32(0)
 export let ONE_BI = BigInt.fromI32(1)
@@ -33,8 +33,8 @@ export function bigDecimalExp18(): BigDecimal {
   return BigDecimal.fromString('1000000000000000000')
 }
 
-export function convertEthToDecimal(eth: BigInt): BigDecimal {
-  return eth.toBigDecimal().div(exponentToBigDecimal(18))
+export function convertKavaToDecimal(Kava: BigInt): BigDecimal {
+  return Kava.toBigDecimal().div(exponentToBigDecimal(18))
 }
 
 export function convertTokenToDecimal(tokenAmount: BigInt, exchangeDecimals: BigInt): BigDecimal {
@@ -53,14 +53,14 @@ export function equalToZero(value: BigDecimal): boolean {
   return false
 }
 
-export function isNullEthValue(value: string): boolean {
+export function isNullKavaValue(value: string): boolean {
   return value == '0x0000000000000000000000000000000000000000000000000000000000000001'
 }
 
 export function fetchTokenSymbol(tokenAddress: Address): string {
   // static definitions overrides
   let staticDefinition = TokenDefinition.fromAddress(tokenAddress)
-  if(staticDefinition != null) {
+  if (staticDefinition != null) {
     return (staticDefinition as TokenDefinition).symbol
   }
 
@@ -74,7 +74,7 @@ export function fetchTokenSymbol(tokenAddress: Address): string {
     let symbolResultBytes = contractSymbolBytes.try_symbol()
     if (!symbolResultBytes.reverted) {
       // for broken pairs that have no symbol function exposed
-      if (!isNullEthValue(symbolResultBytes.value.toHexString())) {
+      if (!isNullKavaValue(symbolResultBytes.value.toHexString())) {
         symbolValue = symbolResultBytes.value.toString()
       }
     }
@@ -88,7 +88,7 @@ export function fetchTokenSymbol(tokenAddress: Address): string {
 export function fetchTokenName(tokenAddress: Address): string {
   // static definitions overrides
   let staticDefinition = TokenDefinition.fromAddress(tokenAddress)
-  if(staticDefinition != null) {
+  if (staticDefinition != null) {
     return (staticDefinition as TokenDefinition).name
   }
 
@@ -102,7 +102,7 @@ export function fetchTokenName(tokenAddress: Address): string {
     let nameResultBytes = contractNameBytes.try_name()
     if (!nameResultBytes.reverted) {
       // for broken exchanges that have no name function exposed
-      if (!isNullEthValue(nameResultBytes.value.toHexString())) {
+      if (!isNullKavaValue(nameResultBytes.value.toHexString())) {
         nameValue = nameResultBytes.value.toString()
       }
     }
@@ -126,7 +126,7 @@ export function fetchTokenTotalSupply(tokenAddress: Address): BigInt {
 export function fetchTokenDecimals(tokenAddress: Address): BigInt {
   // static definitions overrides
   let staticDefinition = TokenDefinition.fromAddress(tokenAddress)
-  if(staticDefinition != null) {
+  if (staticDefinition != null) {
     return (staticDefinition as TokenDefinition).decimals
   }
 
@@ -183,8 +183,8 @@ export function createLiquiditySnapshot(position: LiquidityPosition, event: Ethe
   snapshot.block = event.block.number.toI32()
   snapshot.user = position.user
   snapshot.pair = position.pair
-  snapshot.token0PriceUSD = token0.derivedETH.times(bundle.ethPrice)
-  snapshot.token1PriceUSD = token1.derivedETH.times(bundle.ethPrice)
+  snapshot.token0PriceUSD = token0.derivedKava.times(bundle.KavaPrice)
+  snapshot.token1PriceUSD = token1.derivedKava.times(bundle.KavaPrice)
   snapshot.reserve0 = pair.reserve0
   snapshot.reserve1 = pair.reserve1
   snapshot.reserveUSD = pair.reserveUSD

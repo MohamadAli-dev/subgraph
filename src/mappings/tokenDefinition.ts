@@ -25,16 +25,16 @@ export class TokenDefinition {
     // Add USDC
     staticDefinitions.push(
       new TokenDefinition(
-        Address.fromString('0x43D8814FdFB9B8854422Df13F1c66e34E4fa91fD'),
+        Address.fromString('0xfA9343C3897324496A05fC75abeD6bAC29f8A40f'),
         'USDC',
-        'USD Coin',
+        'USDCoin',
         BigInt.fromI32(6)
       )
     )
 
     staticDefinitions.push(
       new TokenDefinition(
-        Address.fromString('0xFa95D53e0B6e82b2137Faa70FD7E4a4DC70Da449'),
+        Address.fromString('0xc86c7C0eFbd6A49B35E8714C5f59D99De09A225b'),
         'WKAVA',
         'Wrapped Kava',
         BigInt.fromI32(6)
@@ -43,7 +43,7 @@ export class TokenDefinition {
 
     staticDefinitions.push(
       new TokenDefinition(
-        Address.fromString('0x66Cd011aDfF20f2B4bA60cDd30099B5E09CcACd1'),
+        Address.fromString('0x332730a4F6E03D9C55829435f10360E13cfA41Ff'),
         'BUSD',
         'BUSD',
         BigInt.fromI32(18)
@@ -52,7 +52,7 @@ export class TokenDefinition {
 
     staticDefinitions.push(
       new TokenDefinition(
-        Address.fromString('0xE2D3B480C319C9cc525f14fe0DaF7cDcA7bF0c48'),
+        Address.fromString('0xE1da44C0dA55B075aE8E2e4b6986AdC76Ac77d73'),
         'VARA',
         'Vara',
         BigInt.fromI32(18)
@@ -61,7 +61,7 @@ export class TokenDefinition {
 
     staticDefinitions.push(
       new TokenDefinition(
-        Address.fromString('0xB1771bF4090b2D1641795353A12D2F164556AECd'),
+        Address.fromString('0xB44a9B6905aF7c801311e8F4E76932ee959c663C'),
         'USDT',
         'USDT',
         BigInt.fromI32(6)
@@ -70,7 +70,7 @@ export class TokenDefinition {
 
     staticDefinitions.push(
       new TokenDefinition(
-        Address.fromString('0x6c2a54580666d69cf904a82d8180f198c03ece67'),
+        Address.fromString('0xc13791DA84f43525189456CfE2026C60D3B7F706'),
         'WETH',
         'Wrapped ETH',
         BigInt.fromI32(18) // done 
@@ -80,68 +80,12 @@ export class TokenDefinition {
 
     staticDefinitions.push(
       new TokenDefinition(
-        Address.fromString('0x9403d62811FAF985fD4e23dcfb16a643A9239BFf'),
+        Address.fromString('0x765277EebeCA2e31912C9946eAe1021199B39C61'),
         'DAI',
         'DAI',
         BigInt.fromI32(18) // almost 
       )
     )
-
-
-    // Keeping those to check on how get the decimals
-    // // Add DGD
-    // let tokenDGD = new TokenDefinition(
-    //   Address.fromString('0xe0b7927c4af23765cb51314a0e0521a9645f0e2a'),
-    //   'DGD',
-    //   'DGD',
-    //   BigInt.fromI32(9)
-    // )
-    // staticDefinitions.push(tokenDGD)
-
-    // // Add AAVE
-    // let tokenAAVE = new TokenDefinition(
-    //   Address.fromString('0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9'),
-    //   'AAVE',
-    //   'Aave Token',
-    //   BigInt.fromI32(18)
-    // )
-    // staticDefinitions.push(tokenAAVE)
-
-    // // Add LIF
-    // let tokenLIF = new TokenDefinition(
-    //   Address.fromString('0xeb9951021698b42e4399f9cbb6267aa35f82d59d'),
-    //   'LIF',
-    //   'Lif',
-    //   BigInt.fromI32(18)
-    // )
-    // staticDefinitions.push(tokenLIF)
-
-    // // Add SVD
-    // let tokenSVD = new TokenDefinition(
-    //   Address.fromString('0xbdeb4b83251fb146687fa19d1c660f99411eefe3'),
-    //   'SVD',
-    //   'savedroid',
-    //   BigInt.fromI32(18)
-    // )
-    // staticDefinitions.push(tokenSVD)
-
-    // // Add TheDAO
-    // let tokenTheDAO = new TokenDefinition(
-    //   Address.fromString('0xbb9bc244d798123fde783fcc1c72d3bb8c189413'),
-    //   'TheDAO',
-    //   'TheDAO',
-    //   BigInt.fromI32(16)
-    // )
-    // staticDefinitions.push(tokenTheDAO)
-
-    // // Add HPB
-    // let tokenHPB = new TokenDefinition(
-    //   Address.fromString('0x38c6a68304cdefb9bec48bbfaaba5c5b47818bb2'),
-    //   'HPB',
-    //   'HPBCoin',
-    //   BigInt.fromI32(18)
-    // )
-    // staticDefinitions.push(tokenHPB)
 
     return staticDefinitions
   }
