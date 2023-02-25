@@ -25,7 +25,7 @@ export class TokenDefinition {
     // Add USDC
     staticDefinitions.push(
       new TokenDefinition(
-        Address.fromString('0xfA9343C3897324496A05fC75abeD6bAC29f8A40f'),
+        Address.fromString('0xfa9343c3897324496a05fc75abed6bac29f8a40f'),
         'USDC',
         'USDCoin',
         BigInt.fromI32(6)
@@ -34,7 +34,7 @@ export class TokenDefinition {
 
     staticDefinitions.push(
       new TokenDefinition(
-        Address.fromString('0xc86c7C0eFbd6A49B35E8714C5f59D99De09A225b'),
+        Address.fromString('0xc86c7c0efbd6a49b35e8714c5f59d99de09a225b'),
         'WKAVA',
         'Wrapped Kava',
         BigInt.fromI32(6)
@@ -43,7 +43,7 @@ export class TokenDefinition {
 
     staticDefinitions.push(
       new TokenDefinition(
-        Address.fromString('0x332730a4F6E03D9C55829435f10360E13cfA41Ff'),
+        Address.fromString('0x332730a4f6e03d9c55829435f10360e13cfa41ff'),
         'BUSD',
         'BUSD',
         BigInt.fromI32(18)
@@ -52,7 +52,7 @@ export class TokenDefinition {
 
     staticDefinitions.push(
       new TokenDefinition(
-        Address.fromString('0xE1da44C0dA55B075aE8E2e4b6986AdC76Ac77d73'),
+        Address.fromString('0xe1da44c0da55b075ae8e2e4b6986adc76ac77d73'),
         'VARA',
         'Vara',
         BigInt.fromI32(18)
@@ -61,7 +61,7 @@ export class TokenDefinition {
 
     staticDefinitions.push(
       new TokenDefinition(
-        Address.fromString('0xB44a9B6905aF7c801311e8F4E76932ee959c663C'),
+        Address.fromString('0xb44a9b6905af7c801311e8f4e76932ee959c663c'),
         'USDT',
         'USDT',
         BigInt.fromI32(6)
@@ -70,7 +70,7 @@ export class TokenDefinition {
 
     staticDefinitions.push(
       new TokenDefinition(
-        Address.fromString('0xc13791DA84f43525189456CfE2026C60D3B7F706'),
+        Address.fromString('0xc13791da84f43525189456cfe2026c60d3b7f706'),
         'WETH',
         'Wrapped ETH',
         BigInt.fromI32(18) // done 
@@ -80,7 +80,7 @@ export class TokenDefinition {
 
     staticDefinitions.push(
       new TokenDefinition(
-        Address.fromString('0x765277EebeCA2e31912C9946eAe1021199B39C61'),
+        Address.fromString('0x765277eebeca2e31912c9946eae1021199b39c61'),
         'DAI',
         'DAI',
         BigInt.fromI32(18) // almost 

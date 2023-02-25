@@ -8,7 +8,7 @@ dataSources:
     name: Factory
     network: kava-evm
     source:
-      address: '0xA138FAFc30f6Ec6980aAd22656F2F11C38B56a95'
+      address: '0xa138fafc30f6ec6980aad22656f2f11c38b56a95'
       abi: Factory
       startBlock: 3708705
     mapping:

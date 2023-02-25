@@ -5,7 +5,7 @@ import { PairHourData } from './../types/schema'
 import { FACTORY_ADDRESS, ONE_BI, ZERO_BD, ZERO_BI } from './helpers'
 
 export function updateDayData(event: EthereumEvent): DayData {
-  let uniswap = Factory.load(FACTORY_ADDRESS)
+  let equilibre = Factory.load(FACTORY_ADDRESS)
   let timestamp = event.block.timestamp.toI32()
   let dayID = timestamp / 86400
   let dayStartTimestamp = dayID * 86400
@@ -20,9 +20,9 @@ export function updateDayData(event: EthereumEvent): DayData {
     dayData.dailyVolumeUntracked = ZERO_BD
   }
 
-  dayData.totalLiquidityUSD = uniswap.totalLiquidityUSD
-  dayData.totalLiquidityKava = uniswap.totalLiquidityKava
-  dayData.txCount = uniswap.txCount
+  dayData.totalLiquidityUSD = equilibre.totalLiquidityUSD
+  dayData.totalLiquidityKava = equilibre.totalLiquidityKava
+  dayData.txCount = equilibre.txCount
   dayData.save()
 
   return dayData as DayData
