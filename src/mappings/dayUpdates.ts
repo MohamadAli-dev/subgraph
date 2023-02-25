@@ -22,7 +22,7 @@ export function updateDayData(event: EthereumEvent): DayData {
 
   dayData.totalLiquidityUSD = equilibre.totalLiquidityUSD
   dayData.totalLiquidityKava = equilibre.totalLiquidityKava
-  dayData.txCount = equilibre.txCount
+  dayData.txCount = equilibre.txCount 
   dayData.save()
 
   return dayData as DayData

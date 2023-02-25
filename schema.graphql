@@ -44,7 +44,7 @@ type Token @entity {
   totalLiquidity: BigDecimal!
 
   # derived prices
-  derivedKava: BigDecimal
+  derivedKava: BigDecimal!
 
   # derived fields
   tokenDayData: [TokenDayData!]! @derivedFrom(field: "token")
