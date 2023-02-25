@@ -6,11 +6,11 @@ schema:
 dataSources:
   - kind: ethereum/contract
     name: Factory
-    network: kava-evm-testnet
+    network: kava-evm
     source:
-      address: '0x8812420fb6E5d971C969CcEF2275210AB8D014f0'
+      address: '0xA138FAFc30f6Ec6980aAd22656F2F11C38B56a95'
       abi: Factory
-      startBlock: 3506256
+      startBlock: 3708705
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.3
@@ -34,7 +34,7 @@ dataSources:
 templates:
   - kind: ethereum/contract
     name: Pair
-    network: kava-evm-testnet
+    network: kava-evm
     source:
       abi: Pair
     mapping:
